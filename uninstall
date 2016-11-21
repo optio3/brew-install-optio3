@@ -213,6 +213,12 @@ if STDIN.tty? && (!options[:force] && !options[:dry_run])
   abort unless gets.rstrip =~ /y|yes/i
 end
 
+OPTIO3_REPO = HOMEBREW_REPOSITORY/"Library/Taps/optio3/homebrew-devtools"
+OPTIO3_UNINSTALL = OPTIO3_REPO/"Bundles/uninstall-all.bundle"
+if OPTIO3_UNINSTALL.exist?
+  system "#{HOMEBREW_PREFIX}/bin/brew", "bundle", "cleanup", "--force", "--file=#{OPTIO3_UNINSTALL}"
+end
+
 ohai "Removing Homebrew installation..." unless options[:quiet]
 paths = %w[Frameworks bin etc include lib opt sbin share var].
         map { |p| HOMEBREW_PREFIX/p }.

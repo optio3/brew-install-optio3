@@ -344,6 +344,7 @@ else
 end
 
 system "#{HOMEBREW_PREFIX}/bin/brew", "tap", "optio3/devtools"
+system "#{HOMEBREW_PREFIX}/bin/brew", "bundle", "--file=#{HOMEBREW_REPOSITORY}/Library/Taps/optio3/homebrew-devtools/Bundles/common.bundle"
 
 puts "Run `brew help` to get started"
 puts "Further documentation: https://git.io/brew-docs"
